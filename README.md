@@ -2,6 +2,8 @@
 
 This repository demonstrates the usage of plugins in ROS packages.
 
+Note that the ClassLoader must not go out scope while you are using the plugin. So, if you are loading a plugin object inside a class, make sure that the class loader is a member variable of that class. 
+
 ## Content
 - [Plugin Description File Reference](#Plugin-Description-File-Reference)
 
