@@ -75,3 +75,4 @@ Example: A plugin description file for a library with multiple plugins
 
 - Introduction of ROS plugin with Packt [link](https://hub.packtpub.com/working-pluginlib-nodelets-and-gazebo-plugins/)
 - Meaning of plugin.xml tags [link](http://roswiki.autolabor.com.cn/pluginlib(2f)PluginDescriptionFile.html)
+- Implementation and Explanation of pluginlib [link](https://www.xuningyang.com/2020-05-12-ros-pluginlib/)
