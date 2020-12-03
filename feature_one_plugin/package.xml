@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>feature_one_plugin</name>
+  <version>0.0.0</version>
+  <description>The feature_one_plugin package</description>
+
+  <author email="jianle001@e.ntu.edu.sg">Bruce Chan Jian Le</author>
+  <maintainer email="jianle001@e.ntu.edu.sg">Bruce Chan Jian Le</maintainer>
+  <license>MIT</license>
+  <url type="website">https://github.com/BruceChanJianLe/ros_plugin</url>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>pluginlib</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>base_plugin</build_depend>
+
+  <build_export_depend>pluginlib</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>base_plugin</build_export_depend>
+
+  <exec_depend>pluginlib</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>base_plugin</exec_depend>
+
+
+  <export>
+    <base_plugin plugin="${prefix}/plugin.xml"/>
+  </export>
+</package>
