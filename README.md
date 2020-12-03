@@ -6,6 +6,7 @@ Note that the ClassLoader must not go out scope while you are using the plugin. 
 
 ## Content
 - [Plugin Description File Reference](#Plugin-Description-File-Reference)
+- [ERROR](#ERROR)
 
 ## Plugin Description File Reference
 
