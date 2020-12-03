@@ -10,14 +10,14 @@ Note that the ClassLoader must not go out scope while you are using the plugin. 
 
 ## Creating a Base Plugin Package
 
-**Step 1:**
+**Step 1:**  
 Create a package for base plugin class with only a single header file. Note that this package will also be using all the other plugins that you have defined. For now just create a base plugin class.
 
 ```bash
 catkin_create_pkg base_plugin roscpp rospy pluginlib
 ```
 
-**Step 2:**
+**Step 2:**  
 Fill up the header file with methods or members that you wish to have in all your plugins.
 ```cpp
 #ifndef base_plugin_H_
@@ -42,6 +42,99 @@ namespace base_plugin
 
 #endif
 ``` 
+
+## Creating Plugins
+
+**Step 1:**  
+Create a pacakge with base plugin class as dependency.  
+
+```bash
+catkin_create_pkg feature_one_plugin roscpp rospy pluginlib base_plugin
+```
+
+**Step 2:**  
+`Include` base plugin header file in feature_one_plugin and use the `override` keyword.  
+```cpp
+#ifndef feature_one_plugin_H_
+#define feature_one_plugin_H_
+
+#include <base_plugin/base_plugin.hpp>
+
+namespace feature_one
+{
+    class feature_one_plugin: public base_plugin::main_plugin_class
+    {
+        public:
+            feature_one_plugin();
+            ~feature_one_plugin();
+            void initialize(double length) override;
+            double area() override;
+        private:
+            double length_;
+    };
+} // namespace feature_one
+#endif
+```
+
+**Step 3:**  
+Fill up the source file for the feature one plugin.  
+
+**Step 4:**  
+Add plugin.xml file with details.  
+```xml
+<library path="lib/libfeature_one">
+
+  <class type="feature_one::feature_one_plugin" base_class_type="base_plugin::main_plugin_class">
+    <description>This is feature one.</description>
+  </class>
+
+</library
+```
+
+**Step 5:**  
+Add export tag in package.xml file.  
+```xml
+<export>
+  <base_plugin plugin="${prefix}/plugin.xml"/>
+</export>
+```
+
+**Step 6:**  
+Edit CMakeLists.txt by adding the library.  
+```cmake
+cmake_minimum_required(VERSION 3.0.2)
+project(feature_one_plugin)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(catkin REQUIRED COMPONENTS
+  pluginlib
+  roscpp
+  rospy
+  base_plugin
+)
+
+catkin_package(
+  INCLUDE_DIRS include
+#  LIBRARIES feature_one_plugin
+#  CATKIN_DEPENDS pluginlib roscpp rospy
+#  DEPENDS system_lib
+)
+
+include_directories(
+  include
+  ${catkin_INCLUDE_DIRS}
+)
+
+add_library(feature_one src/feature_one_plugin.cpp)
+
+add_dependencies(feature_one ${catkin_EXPORTED_TARGETS})
+target_link_libraries(feature_one ${catkin_LIBRARIES} )
+install(TARGETS feature_one
+      LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+)
+```
 
 ## Plugin Description File Reference
 
