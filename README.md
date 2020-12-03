@@ -71,8 +71,17 @@ Example: A plugin description file for a library with multiple plugins
 </library>
 ```
 
+## ERROR
+
+`/home/chanjl/plugin_ws/devel/lib/base_plugin/user_plugin: symbol lookup error: /home/chanjl/plugin_ws/devel/lib//libfeature_one.so: undefined symbol: _ZN11base_plugin17main_plugin_classC2Ev`
+
+In this error, it seems like there is a symbol lookup error. And if you run the command `c++filt _ZN11base_plugin17main_plugin_classC2Ev` you will know that which member of the class is missing, in our example here is that we have implemented a `base_plugin.hpp` and `base_plugin.cpp` which is undesirable. Therefore, please only define the `base_plugin.hpp` in the example shown.
+
+For more information please look at this [video](https://www.youtube.com/watch?v=4xZKflNlJho) and [link](https://www.xuningyang.com/2020-05-12-ros-pluginlib/).
+
 ## Reference
 
 - Introduction of ROS plugin with Packt [link](https://hub.packtpub.com/working-pluginlib-nodelets-and-gazebo-plugins/)
 - Meaning of plugin.xml tags [link](http://roswiki.autolabor.com.cn/pluginlib(2f)PluginDescriptionFile.html)
 - Implementation and Explanation of pluginlib [link](https://www.xuningyang.com/2020-05-12-ros-pluginlib/)
+- Symbol Lookup Error [link](https://www.youtube.com/watch?v=4xZKflNlJho)
