@@ -8,6 +8,41 @@ Note that the ClassLoader must not go out scope while you are using the plugin. 
 - [Plugin Description File Reference](#Plugin-Description-File-Reference)
 - [ERROR](#ERROR)
 
+## Creating a Base Plugin Package
+
+**Step 1:**
+Create a package for base plugin class with only a single header file. Note that this package will also be using all the other plugins that you have defined. For now just create a base plugin class.
+
+```bash
+catkin_create_pkg base_plugin roscpp rospy pluginlib
+```
+
+**Step 2:**
+Fill up the header file with methods or members that you wish to have in all your plugins.
+```cpp
+#ifndef base_plugin_H_
+#define base_plugin_H_
+
+#include <ros/ros.h>
+#include <memory>
+
+namespace base_plugin
+{
+    class main_plugin_class
+    {
+        public:
+            virtual void initialize(double length) = 0;
+            virtual double area() = 0;
+            virtual ~main_plugin_class() {};
+
+        protected:
+            main_plugin_class() {};
+    };
+} // namespace test_base_plugin
+
+#endif
+``` 
+
 ## Plugin Description File Reference
 
 Tag | Explanation
