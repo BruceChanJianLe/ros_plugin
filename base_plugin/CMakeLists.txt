@@ -28,3 +28,10 @@ add_executable(
   src/user_plugin.cpp
 )
 target_link_libraries(user_plugin_node ${catkin_LIBRARIES})
+
+add_executable(
+  plugin_loader_node
+  src/plugin_loader_node.cpp
+  src/plugin_loader.cpp
+)
+target_link_libraries(plugin_loader_node ${catkin_LIBRARIES})
