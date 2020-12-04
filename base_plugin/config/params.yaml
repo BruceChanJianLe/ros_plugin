@@ -1,0 +1,9 @@
+  feature_one:
+    enabled: true
+
+  feature_two:
+    enabled: true
+
+  plugins:
+  - {name: feature_one,   type: "feature_one::feature_one_plugin"}
+  - {name: feature_two,   type: "feature_two::feature_two_plugin"}
