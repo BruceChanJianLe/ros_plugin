@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+    <node pkg="base_plugin" type="plugin_loader_node" name="plugin_loader_node" output="screen">
+        <rosparam command="load" file="$(find base_plugin)/config/params.yaml"/>
+    </node>
+</launch>
