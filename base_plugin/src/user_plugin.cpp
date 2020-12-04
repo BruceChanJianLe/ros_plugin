@@ -28,6 +28,11 @@ namespace user_namespace
             feature_one->initialize(10.0);
 
             ROS_INFO_STREAM("Feature One Area: " << feature_one->area());
+
+            boost::shared_ptr<base_plugin::main_plugin_class> feature_two = plugin_loader_ptr_->createInstance("feature_two::feature_two_plugin");
+            feature_two->initialize(10.0);
+
+            ROS_INFO_STREAM("Feature Two Area: " << feature_two->area());
         }
         catch(pluginlib::PluginlibException & e)
         {
