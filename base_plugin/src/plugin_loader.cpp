@@ -9,22 +9,28 @@ namespace plugin_loader
     {
         if(nh_private_.hasParam("plugins"))
         {
+            // Yaml param holder variable
             XmlRpc::XmlRpcValue plugin_list;
+
+            // Load param from yaml to local variable
             nh_private_.getParam("plugins", plugin_list);
-            ROS_INFO_STREAM("size of plugin_list: " << plugin_list.size());
             for(int i = 0; i < plugin_list.size(); i++)
             {
+                // Insert plugin to map
+                plugins_.insert(std::make_pair(plugin_list[i]["name"], plugin_loader_ptr->createInstance(plugin_list[i]["type"])));
+                // Emplace names to list
+                plugin_names_.push_back(plugin_list[i]["name"]);
+                // Inform user of loaded plugin
                 ROS_INFO_STREAM(
                     "Loaded " << plugin_list[i]["name"] << " plugin!"
                 );
-                plugins_.emplace_back(plugin_loader_ptr->createInstance(plugin_list[i]["type"]));
             }
         }
 
         // Initialize all loaded plugins
         for(auto plugin : plugins_)
         {
-            plugin->initialize(10.0);
+            plugin.second->initialize(10.0);
         }
     }
 
@@ -40,7 +46,7 @@ namespace plugin_loader
         // Run all loaded plugins
         for(auto plugin : plugins_)
         {
-            ROS_INFO_STREAM("Area: " << plugin->area());
+            ROS_INFO_STREAM("Area: " << plugin.second->area());
         }
     }
 } // namespace plugin_loader
