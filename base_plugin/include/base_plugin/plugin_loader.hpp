@@ -5,6 +5,7 @@
 #include <memory>
 #include <vector>
 #include <string>
+#include <map>
 
 
 namespace plugin_loader
@@ -19,7 +20,8 @@ namespace plugin_loader
         private:
             ros::NodeHandle nh_private_;
             std::unique_ptr<pluginlib::ClassLoader<base_plugin::main_plugin_class>> plugin_loader_ptr;
-            std::vector<boost::shared_ptr<base_plugin::main_plugin_class>> plugins_;
+            std::map<std::string, boost::shared_ptr<base_plugin::main_plugin_class>> plugins_;
+            std::vector<std::string> plugin_names_;
 
     };
 } // namespace plugin_loader
