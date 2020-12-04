@@ -11,8 +11,8 @@ namespace feature_two
         public:
             feature_two_plugin();
             ~feature_two_plugin();
-            void initialize(double length) override;
-            double area() override;
+            virtual void initialize(double length) override;
+            virtual double area() override;
         private:
             double length_;
     };
