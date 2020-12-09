@@ -6,6 +6,7 @@
 
 namespace feature_two
 {
+    // Note that the inherited base class must declare public
     class feature_two_plugin : public base_plugin::main_plugin_class
     {
         public:
