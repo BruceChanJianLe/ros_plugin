@@ -6,6 +6,7 @@ Note that the ClassLoader must not go out scope while you are using the plugin. 
 
 ## Content
 - [Plugin Description File Reference](#Plugin-Description-File-Reference)
+- [Verify Plugin Declaration and Path](#Verify-Plugin-Declaration-and-Path)
 - [ERROR](#ERROR)
 
 ## Creating a Base Plugin Package
