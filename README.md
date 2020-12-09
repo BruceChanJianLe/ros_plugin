@@ -200,6 +200,13 @@ Example: A plugin description file for a library with multiple plugins
 </library>
 ```
 
+## Verify Plugin Declaration and Path
+
+To verify that things are working, first build the workspace and source the resulting setup file, then try running the following rospack command:  
+```bash
+rospack plugins --attrib=plugin base_plugin
+```
+
 ## ERROR
 
 `/home/chanjl/plugin_ws/devel/lib/base_plugin/user_plugin: symbol lookup error: /home/chanjl/plugin_ws/devel/lib//libfeature_one.so: undefined symbol: _ZN11base_plugin17main_plugin_classC2Ev`
