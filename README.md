@@ -63,6 +63,7 @@ catkin_create_pkg feature_one_plugin roscpp rospy pluginlib base_plugin
 
 namespace feature_one
 {
+    // Note that the inherited base class must declare public
     class feature_one_plugin: public base_plugin::main_plugin_class
     {
         public:
