@@ -35,3 +35,16 @@ add_executable(
   src/plugin_loader.cpp
 )
 target_link_libraries(plugin_loader_node ${catkin_LIBRARIES})
+
+## Unit Test
+# http://wiki.ros.org/gtest
+catkin_add_gtest(
+  plugin_test
+  test/plugin_test.cpp
+)
+if(TARGET plugin_test)
+  target_link_libraries(
+    plugin_test
+    ${catkin_LIBRARIES}
+  )
+endif()
