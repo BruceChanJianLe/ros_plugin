@@ -217,6 +217,8 @@ In this error, it seems like there is a symbol lookup error. And if you run the 
 
 For more information please look at this [video](https://www.youtube.com/watch?v=4xZKflNlJho) and [link](https://www.xuningyang.com/2020-05-12-ros-pluginlib/).
 
+This error can also happen when you declare a member function in a class but you forget to define the body of the member function in the source code, hence, leading to this error.
+
 ## Reference
 
 - Introduction of ROS plugin with Packt [link](https://hub.packtpub.com/working-pluginlib-nodelets-and-gazebo-plugins/)
