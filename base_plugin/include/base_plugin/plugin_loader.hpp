@@ -7,6 +7,7 @@
 #include <string>
 #include <map>
 
+#include <xmlrpcpp/XmlRpc.h>
 
 namespace plugin_loader
 {
