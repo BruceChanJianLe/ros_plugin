@@ -227,6 +227,14 @@ This error can also happen when you declare a member function in a class but you
 
 Refer to this [link](https://github.com/mavlink/mavros/issues/121) for more details. But most likely you did not write the plugins.xml properly, kindly check whether the double colons are there. "point_cloud_filter:CropBox" and "point_cloud_filters::CropBoxFilter" are two different things. The error is pretty self explanatory, but sometime we don't read properly.
 
+## Notes
+
+If you would like to list the plugin that is available, you may run the following command:
+```bash
+# rospack plugins --attrib=plugin PACKAGE_NAME
+rospack plugins --attrib=plugin base_plugin
+```
+
 ## Reference
 
 - Introduction of ROS plugin with Packt [link](https://hub.packtpub.com/working-pluginlib-nodelets-and-gazebo-plugins/)
