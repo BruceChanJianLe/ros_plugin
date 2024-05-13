@@ -227,6 +227,12 @@ This error can also happen when you declare a member function in a class but you
 
 Refer to this [link](https://github.com/mavlink/mavros/issues/121) for more details. But most likely you did not write the plugins.xml properly, kindly check whether the double colons are there. "point_cloud_filter:CropBox" and "point_cloud_filters::CropBoxFilter" are two different things. The error is pretty self explanatory, but sometime we don't read properly.
 
+*Error 2**
+
+`/test_filter_manager onInit caught an error: MultiLibraryClassLoader: Could not class of type point_cloud_filters:CropBoxFilter<point_cloud_filters::pclType>`
+
+One of the reason that this happens, is because both the filter package and the package that uses the filter has different c++ standard. Please ensure that they are both the same standard for compatibility.
+
 ## Notes
 
 If you would like to list the plugin that is available, you may run the following command:
